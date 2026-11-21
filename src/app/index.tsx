@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Button, SafeAreaView, StyleSheet } from "react-native";
-import ContactsList from "../components/ContactsList.js";
+import SearchContacts from "../components/SearchContacts.js";
 import contacts, { compareNames } from "../data/contacts.js";
 
 export default function Index() {
   const [showContacts, setShowContacts] = useState(false);
-  const [sortdContacts, setSortedContacts] = useState(contacts);
+  const [sortedContacts, setSortedContacts] = useState(contacts);
 
   const toggleContacts = () => {
     setShowContacts((prev) => !prev);
@@ -21,7 +21,7 @@ export default function Index() {
     <SafeAreaView>
       <Button title="toggle contacts" onPress={toggleContacts} />
       <Button title="sort" onPress={sort} />
-      {showContacts && (<ContactsList contacts={sortdContacts} />)}
+      <SearchContacts contacts={sortedContacts} showContacts={showContacts} />
     </SafeAreaView>
   );
 }
